@@ -1,0 +1,71 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: AWS serveless CRUD API demo
+Resources:
+  DynamoBooksTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: movies
+      PrimaryKey:
+        Name: movie_uuid
+        Type: String
+  CreateMovieFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: create_movie.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: python3.7
+      Timeout: 10
+      MemorySize: 512
+      Events:
+        CreateMovie:
+          Type: Api
+          Properties:
+            Path: /movies
+            Method: post
+  ReadMovieFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: read_movie.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: python3.7
+      Timeout: 10
+      MemorySize: 512
+      Events:
+        ReadMovie:
+          Type: Api
+          Properties:
+            Path: /movies
+            Method: get
+  UpdateMovieFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: update_movie.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: python3.7
+      Timeout: 10
+      MemorySize: 512
+      Events:
+        CreateMovie:
+          Type: Api
+          Properties:
+            Path: /movies
+            Method: put
+  DeleteMovieFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: delete_movie.handler
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: python3.7
+      Timeout: 10
+      MemorySize: 512
+      Events:
+        CreateMovie:
+          Type: Api
+          Properties:
+            Path: /movies
+            Method: delete
