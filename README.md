@@ -1,5 +1,20 @@
 # AWS lambda CRUD proxy
-This small repo represent a CRUD endpoint using API GW and Lambda.
+Fully functional Serverless CRUD API with the following operations (as example):
+
+* POST /movies
+* GET /movies?movie_uuid={uuid}
+* PUT /movies
+* DELETE /movies?movie_uuid={uuid}
+
+
+![flow chart](./apigw-lambda.png)
+
+## Tecnologies used
+* **AWS Lambda** for running code without provisioning servers.
+* **AWS API Gateway** for serverless API creation and management.
+* **AWS IAM** for creating roles for the lambdas functions.
+* **AWS DynamoDB** for a managed NoSQL database.
+
 ## Deploying
 In order to deploy, we will need to run the following commands:
 * This command is going to prepare the package and upload into S3 bucket.
