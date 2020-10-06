@@ -1,6 +1,6 @@
 # AWS lambda CRUD proxy
 
-This repository has been written in Python and represents a fully functional Serveless CRUD API in front of an AWS DynamoCB table that manages the "movies" domain. An API Gateway distributes the requests to the AWS lambda functions based on theit HTTP mehtods.
+This repository has been written in Python and represents a fully functional Serverless CRUD API in front of an AWS DynamoDB table that manages the "movies" domain. An API Gateway distributes the requests to the AWS lambda functions based on their HTTP mehtods.
 
 We have the following operations: 
 
